@@ -8,7 +8,8 @@ import org.openqa.selenium.WebElement;
 public class RegisterUserTest {
 
 	public static void main(String[] args) {
-
+		
+//First Practise
 		// open browser
 		WebDriver driver = new ChromeDriver();
 		// Go to withbugs page
