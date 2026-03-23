@@ -51,8 +51,14 @@ public class DynamicCheckBox {
 		Assert.assertEquals(check, "Add");
 		System.out.println("Add button appears");
 
-		WebElement messageEle = driver.findElement(By.xpath("//p[@id='message']"));
-		wait.until(ExpectedConditions.textToBePresentInElement(messageEle, "It's gone!"));
+//		WebElement messageEle = driver.findElement(By.xpath("//p[@id='message']"));
+//		wait.until(ExpectedConditions.textToBePresentInElement(messageEle, "It's gone!"));
+		
+		WebElement messageEle = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@id='message']")));
+		String message = messageEle.getText();
+		
+		Assert.assertEquals(message, "It's gone!");
+	
 		System.out.println("Message \"It's gone!\" is displayed");
 
 		driver.quit();

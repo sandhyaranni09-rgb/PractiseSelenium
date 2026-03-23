@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testingWebElements.DynamicControl">
+      <class name="testingWebElements.DynamicCheckBox">
         <methods>
-          <include name="testDynamicControl"/>
+          <include name="dynamicCheckTest"/>
         </methods>
-      </class> <!-- testingWebElements.DynamicControl -->
+      </class> <!-- testingWebElements.DynamicCheckBox -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
