@@ -91,7 +91,7 @@ public class DropDownSelection {
 		
 		WebElement phoneNumber = driver.findElement(By.xpath("//input[@id='phone']"));							
 		
-		//phoneNumber.sendKeys(new Faker().phoneNumber().phoneNumber());																	
+		//phoneNumber.sendKeys(new Faker().phoneNumber().cellPhone());																	
 		
 		phoneNumber.sendKeys("4318283891");
 		WebElement emailAddress = driver.findElement(By.xpath("//input[@id='email']"));						

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testNg.DropDownSelection">
+      <class name="testingWebElements.DynamicControl">
         <methods>
-          <include name="DropDownSelectionTest"/>
+          <include name="testDynamicControl"/>
         </methods>
-      </class> <!-- testNg.DropDownSelection -->
+      </class> <!-- testingWebElements.DynamicControl -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
