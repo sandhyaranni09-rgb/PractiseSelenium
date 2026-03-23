@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-22T22:30:37 EDT" name="Default suite" finished-at="2026-03-22T22:30:42 EDT" duration-ms="5662">
+  <suite started-at="2026-03-22T22:33:25 EDT" name="Default suite" finished-at="2026-03-22T22:33:31 EDT" duration-ms="6111">
     <groups>
     </groups>
-    <test started-at="2026-03-22T22:30:37 EDT" name="Default test" finished-at="2026-03-22T22:30:42 EDT" duration-ms="5662">
+    <test started-at="2026-03-22T22:33:25 EDT" name="Default test" finished-at="2026-03-22T22:33:31 EDT" duration-ms="6111">
       <class name="testingWebElements.DynamicControl">
-        <test-method signature="testDynamicControl()[pri:0, instance:testingWebElements.DynamicControl@6fe7aac8]" started-at="2026-03-22T22:30:37 EDT" name="testDynamicControl" finished-at="2026-03-22T22:30:42 EDT" duration-ms="5632" status="PASS">
+        <test-method signature="testDynamicControl()[pri:0, instance:testingWebElements.DynamicControl@5223e5ee]" started-at="2026-03-22T22:33:25 EDT" name="testDynamicControl" finished-at="2026-03-22T22:33:31 EDT" duration-ms="6055" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicControl -->
