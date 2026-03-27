@@ -28,12 +28,18 @@ public class DynamicCheckBox {
 
 		dynamicControls.click();
 
-		WebElement checkboxEle = driver.findElement(By.xpath("//div[@id = 'checkbox']"));
+		WebElement checkboxEle = driver.findElement(By.xpath("//input[@type = 'checkbox']"));
 
 		checkboxEle.click();
+		
+		Assert.assertTrue(checkboxEle.isSelected());
+	
 
-		checkboxEle.isSelected();
-		System.out.println("Checkbox is selected");
+		//boolean isSelected= checkboxEle.isSelected();
+		
+		//Assert.assertTrue(isSelected);
+		
+		
 
 		// WebElement removebuttonEle =
 		// driver.findElement(By.xpath("//button[text()='Remove']"));
@@ -61,7 +67,8 @@ public class DynamicCheckBox {
 	
 		System.out.println("Message \"It's gone!\" is displayed");
 
-		driver.quit();
+		//driver.quit();
 
 	}
+
 }
