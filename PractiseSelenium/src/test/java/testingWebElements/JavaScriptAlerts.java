@@ -35,20 +35,43 @@ public class JavaScriptAlerts {
 
 		jsAlertEle.click();
 
-		// driver.findElement(By.xpath("//button[text()='Click for JS
-		// Alert']")).click();
+		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		alert.accept();
 
-		// button[text()='Click for JS Alert']
+		// WebElement resultEle = driver.findElement(By.xpath("//p[@id='result']"));
+		String message = driver.findElement(By.xpath("//p[@id='result']")).getText();
+
+		Assert.assertEquals(message, "You successfully clicked an alert");
+		System.out.println(message);
+
+		driver.quit();
+	}
+
+	@Test
+	public void clickForJSConfirm() {
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate().to("https://the-internet.herokuapp.com/");
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		driver.findElement(By.xpath("//a[text()='JavaScript Alerts']")).click();
+
+		WebElement clickJSConfirm = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Confirm']")));
+
+		clickJSConfirm.click();
 
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		alert.accept();
 
-		WebElement resultEle = driver.findElement(By.xpath("//p[@id='result']"));
+		// WebElement resultEle= driver.findElement(By.xpath("//p[@id='result']"));
 		String message = driver.findElement(By.xpath("//p[@id='result']")).getText();
 
-		Assert.assertEquals(message, "You successfully clicked an alert");
+		Assert.assertEquals(message, "You clicked: Ok");
+		System.out.println(message);
 
-		resultEle.getText();
+		driver.quit();
 
 	}
 
