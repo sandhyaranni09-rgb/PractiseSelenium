@@ -35,12 +35,6 @@ public class DynamicCheckBox {
 		Assert.assertTrue(checkboxEle.isSelected());
 	
 
-		//boolean isSelected= checkboxEle.isSelected();
-		
-		//Assert.assertTrue(isSelected);
-		
-		
-
 		// WebElement removebuttonEle =
 		// driver.findElement(By.xpath("//button[text()='Remove']"));
 
