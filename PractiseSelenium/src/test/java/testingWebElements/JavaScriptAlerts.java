@@ -74,5 +74,32 @@ public class JavaScriptAlerts {
 		driver.quit();
 
 	}
+	
+	@Test
 
+	public void clickForJSPrompt() {
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://the-internet.herokuapp.com/");
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']"))).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Prompt']"))).click();
+
+		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		alert.sendKeys("Sandhya");
+
+		alert.accept();
+
+		String msg = driver.findElement(By.xpath("//p[@id='result']")).getText();
+
+		Assert.assertEquals(msg, "You entered: Sandhya");
+		
+		System.out.println(msg);
+
+		driver.quit();
+	}
 }
