@@ -18,6 +18,11 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 	public void jsAlerts() {
 
 		// preReq();
+		
+		WebElement jsAlertsEle = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
+
+		jsAlertsEle.click();
 
 		WebElement jsAlertEle = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Alert']")));
@@ -40,6 +45,11 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 	public void clickForJSConfirm() {
 
 		// preReq();
+		
+		WebElement jsAlertsEle = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
+
+		jsAlertsEle.click();
 
 		WebElement clickJSConfirm = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Confirm']")));
@@ -63,6 +73,11 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 
 	public void clickForJSPrompt() {
 		// preReq();
+		
+		WebElement jsAlertsEle = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
+
+		jsAlertsEle.click();
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Prompt']"))).click();
 

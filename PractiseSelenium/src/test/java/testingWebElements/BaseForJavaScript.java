@@ -23,10 +23,7 @@ public class BaseForJavaScript {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		driver.navigate().to("https://the-internet.herokuapp.com/");
 
-		WebElement jsAlertsEle = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
-
-		jsAlertsEle.click();
+		
 
 	}
 
