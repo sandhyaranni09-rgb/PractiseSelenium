@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class JavaScriptAlertsDRY extends BaseForJavaScript  {
+public class JavaScriptAlertsDRY  {
 	
 	WebDriver driver;
 	WebDriverWait wait;
