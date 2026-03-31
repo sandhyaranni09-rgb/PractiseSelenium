@@ -29,6 +29,8 @@ public class SeleniumActions extends BaseForJavaScript{
 		
 		System.out.println("Successfully Dragged and Dropped");
 		
+		driver.quit();
+		
 		
 	}
 }
