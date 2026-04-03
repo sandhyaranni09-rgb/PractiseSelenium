@@ -24,8 +24,10 @@ public class WindowHandlesTest {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tabButton"))).click();
-		
+
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("windowButton"))).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("messageWindowButton"))).click();
 
 		String parentWindowHandle = driver.getWindowHandle();
 
@@ -39,15 +41,36 @@ public class WindowHandlesTest {
 
 				driver.switchTo().window(handle);
 
-				String message = driver.findElement(By.id("sampleHeading")).getText();
+				String urlEle= driver.getCurrentUrl();
+				
+				if (urlEle.contains("https://demoqa.com/sample")) {
+					
+					String message = driver.findElement(By.id("sampleHeading")).getText();
+					
+					Assert.assertEquals(message, "This is a sample page");
+					
+					System.out.println("New Tab Handle : " + handle);
+					
+				}
+				else {
+	
+				System.out.println("New Window Message Handle");
+				}
+				
+				}
+//				String message = driver.findElement(By.id("sampleHeading")).getText();
+//
+//				if (message.equalsIgnoreCase("This is a sample page")) {
+//
+//					Assert.assertEquals(message, "This is a sample page");
+//
+//					System.out.println("New Tab Handle : " + handle);
+//				}
 
-				Assert.assertEquals(message, "This is a sample page");
-
-				System.out.println("New Tab Handle : "+ handle );
 			}
 
 		}
 
 	}
 
-}
+
