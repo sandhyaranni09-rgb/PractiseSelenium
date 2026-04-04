@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -41,23 +42,28 @@ public class WindowHandlesTest {
 
 				driver.switchTo().window(handle);
 
-				String urlEle= driver.getCurrentUrl();
-				
-				if (urlEle.contains("https://demoqa.com/sample")) {
-					
-					String message = driver.findElement(By.id("sampleHeading")).getText();
-					
-					Assert.assertEquals(message, "This is a sample page");
-					
+				String pageInfo = driver.getPageSource();
+
+				if (pageInfo.contains("sample")) {
+
+					wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("sampleHeading"),
+							"This is a sample page"));
+
+					// .findElement(By.id("sampleHeading")).getText();
+
+					// String message = messageEle.getText();
+
+					// Assert.assertEquals(message, "This is a sample page");
+
 					System.out.println("New Tab Handle : " + handle);
-					
+					//System.out.println("Text on Window : " + pageInfo);
+
+				} else {
+
+					System.out.println(pageInfo);
 				}
-				else {
-	
-				System.out.println("New Window Message Handle");
-				}
-				
-				}
+
+			}
 //				String message = driver.findElement(By.id("sampleHeading")).getText();
 //
 //				if (message.equalsIgnoreCase("This is a sample page")) {
@@ -67,10 +73,8 @@ public class WindowHandlesTest {
 //					System.out.println("New Tab Handle : " + handle);
 //				}
 
-			}
-
 		}
-
+		driver.quit();
 	}
 
-
+}
