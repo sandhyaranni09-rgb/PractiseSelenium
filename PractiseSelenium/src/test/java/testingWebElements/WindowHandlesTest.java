@@ -58,6 +58,7 @@ public class WindowHandlesTest {
 					System.out.println("New Tab Handle : " + handle);
 					//System.out.println("Text on Window : " + pageInfo);
 
+					
 				} else {
 
 					System.out.println(pageInfo);
