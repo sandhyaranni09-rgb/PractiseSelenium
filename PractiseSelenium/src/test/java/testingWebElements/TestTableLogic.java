@@ -12,9 +12,11 @@ import org.openqa.selenium.WebElement;
 public class TestTableLogic extends BaseForTestTable {
 	@Test
 
-	public void filterTest() {
+	public void filterTest() throws InterruptedException {
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Java']"))).click();
+
+		//Thread.sleep(5000);
 
 		List<WebElement> columnValues = driver.findElements(By.xpath("//table/tbody/tr/td[3]"));
 
@@ -24,16 +26,12 @@ public class TestTableLogic extends BaseForTestTable {
 
 //			Assert.assertEquals(value, "Java");
 //			System.out.println("Test Passed");
-			
-			
-			if(value.equals("Java")) {
+
+			if (value.equals("Java")) {
 				System.out.println("Test Passed");
-			}
-			else {
+			} else {
 				System.out.println("Test Failed");
 			}
-
-			
 
 		}
 
@@ -43,6 +41,19 @@ public class TestTableLogic extends BaseForTestTable {
 	public void levelFilterTest() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Intermediate']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Advanced']"))).click();
+
+		List<WebElement> columnValues = driver.findElements(By.xpath("//table/tbody/tr/td[4]"));
+
+		for (WebElement level : columnValues) {
+
+			String value = level.getText();
+
+			if (value.equals("Beginner")) {
+				System.out.println("Test Passed");
+			} else {
+				System.out.println("Test Failed");
+			}
+		}
 	}
 
 	@Test

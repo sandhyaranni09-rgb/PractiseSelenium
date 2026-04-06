@@ -17,6 +17,7 @@ public class BaseForTestTable {
 	public void preReq() {
 		
 		driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
 		
