@@ -16,9 +16,10 @@ public class TestTableLogic extends BaseForTestTable {
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Java']"))).click();
 
-		//Thread.sleep(5000);
+		// Thread.sleep(5000);
 
-		List<WebElement> columnValues = driver.findElements(By.xpath("//table/tbody/tr/td[3]"));
+		List<WebElement> columnValues = driver
+				.findElements(By.xpath("//table/tbody/tr[not(contains(@style,'display: none;'))]/td[3]"));
 
 		for (WebElement language : columnValues) {
 
@@ -42,17 +43,21 @@ public class TestTableLogic extends BaseForTestTable {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Intermediate']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Advanced']"))).click();
 
-		List<WebElement> columnValues = driver.findElements(By.xpath("//table/tbody/tr/td[4]"));
+		List<WebElement> columnValues = driver
+				.findElements(By.xpath("//table/tbody/tr[not(contains(@style,'display: none;'))]/td[4]"));
 
 		for (WebElement level : columnValues) {
 
 			String value = level.getText();
 
-			if (value.equals("Beginner")) {
-				System.out.println("Test Passed");
-			} else {
-				System.out.println("Test Failed");
-			}
+			Assert.assertEquals(value, "Beginner");
+			System.out.println("Test Passed");
+
+//			if (value.equals("Beginner")) {
+//				System.out.println("Test Passed");
+//			} else {
+//				System.out.println("Test Failed");
+//			}
 		}
 	}
 
