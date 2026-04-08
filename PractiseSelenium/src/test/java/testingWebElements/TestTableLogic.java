@@ -66,6 +66,55 @@ public class TestTableLogic extends BaseForTestTable {
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@role='button']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul/li[@data-value='10000']"))).click();
+
+		List<WebElement> enrolValues = driver
+				.findElements(By.xpath("//table//tr[not(contains(@style,'display: none;'))]/td[5]"));
+
+		for (WebElement enroll : enrolValues) {
+
+			String value = enroll.getText();
+
+			int numValues = Integer.valueOf(value);
+
+			Assert.assertTrue(numValues >= 10000);
+			System.out.println("Valid Enrollment: " + numValues);
+
+		}
+
+	}
+
+	@Test
+
+	public void combinationFilterTest() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Python']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Intermediate']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Advanced']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@role='button']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul/li[@data-value='10000']"))).click();
+		
+		List <WebElement> rows = driver.findElements(By.xpath("//table//tr[not(contains(@style,'display: none;'))]"));
+		
+		
+		for (WebElement row: rows) {
+			
+			String language = row.findElement(By.xpath("//table//tr[not(contains(@style,'display: none;'))]/td[3]")).getText();
+			
+			String level = row.findElement(By.xpath("//table//tr[not(contains(@style,'display: none;'))]/td[4]")).getText();
+			
+			String enrollment = row.findElement(By.xpath("//table//tr[not(contains(@style,'display: none;'))]/td[5]")).getText();
+			
+			int enrolNum= Integer.valueOf(enrollment);
+			
+			Assert.assertEquals(language, "Python");
+			//System.out.println("Language is "+ language);
+			Assert.assertEquals(level, "Beginner");
+			//System.out.println("Level is " + level);
+			Assert.assertTrue(enrolNum>=10000);
+			//System.out.println("Enrollment Number is " + enrolNum);
+			
+		}
+
 	}
 
 }
