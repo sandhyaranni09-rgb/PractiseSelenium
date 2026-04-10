@@ -34,48 +34,48 @@ public class NoResultAndReset extends BaseForTestTable {
 	@Test
 
 	public void resetButtonTest() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label/input[@value='Java']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label/input[@value='Java']"))).click();
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()=' Beginner']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()=' Beginner']"))).click();
 
-//		WebElement resetbutton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Reset']")));
-//		
-//		Assert.assertEquals(resetbutton, "Reset");
+		WebElement resetbutton = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Reset']")));
 
-//		resetbutton.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Reset']"))).isDisplayed();
+		String reset = resetbutton.getText();
+
+		Assert.assertEquals(reset, "Reset");
+
+		resetbutton.click();
+		// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Reset']"))).isDisplayed();
 
 		String language = driver.findElement(By.xpath("//input[@name='lang' and @checked]")).getAttribute("value");
 
 		Assert.assertEquals(language, "Any");
 
-		String checkbox = driver.findElement(By.xpath("//input[@name='level' and @checked]")).getAttribute("value");
-
-		Assert.assertEquals(checkbox, "Beginner");
-
-//		WebElement checkbox = driver.findElement(
-//			    By.xpath("//input[@name='level' and @value='Beginner']")
-//			);
+//		String checkbox = driver.findElement(By.xpath("//input[@name='level' and @checked]")).getAttribute("value");
 //
+//		Assert.assertEquals(checkbox, "Beginner");
+
+//		WebElement checkbox = wait.until(
+//				ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='level' and @value='Beginner']")));
+//				
 //			Assert.assertTrue(checkbox.isSelected(), "Beginner checkbox is not selected");
-//			
-//			WebElement checkbox1 = driver.findElement(
-//				    By.xpath("//input[@name='level' and @value='Intermediate']")
-//				);
-//
-//				Assert.assertTrue(checkbox1.isSelected(), "Intermediate checkbox is not selected");
-//		
-//		WebElement checkbox2 = driver.findElement(
-//			    By.xpath("//input[@name='level' and @value='Advanced']")
-//			);
-//
-//			Assert.assertTrue(checkbox2.isSelected(), "Advanced checkbox is not selected");
-//			
-//			
-//			String enrolValue= driver.findElement(By.xpath("//div/span[@class='dropdown-label']")).getText();
-//			
-//			Assert.assertEquals(enrolValue, "Any");
-//			
+
+		By beginner = By.xpath("//input[@name='level' and @value='Beginner']");
+		wait.until(ExpectedConditions.elementToBeSelected(beginner));
+		Assert.assertTrue(driver.findElement(beginner).isSelected(), "Beginner not selected");
+
+		By intermediate = By.xpath("//input[@name='level' and @value='Intermediate']");
+		wait.until(ExpectedConditions.elementToBeSelected(intermediate));
+		Assert.assertTrue(driver.findElement(intermediate).isSelected(), "Intermediate not selected");
+
+		By advanced = By.xpath("//input[@name='level' and @value='Advanced']");
+		wait.until(ExpectedConditions.elementToBeSelected(advanced));
+		Assert.assertTrue(driver.findElement(advanced).isSelected(), "Advanced not selected");
+
+		String minEnrollments = driver.findElement(By.xpath("//div[@data-value='any']")).getText();
+
+		Assert.assertEquals(minEnrollments, "Any", "Min enrollments not reset");
 
 	}
 }
