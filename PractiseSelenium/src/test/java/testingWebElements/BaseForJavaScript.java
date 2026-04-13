@@ -29,11 +29,6 @@ public class BaseForJavaScript {
 //		
 //		driver = new ChromeDriver();
 //		}
-//		if (browser.equals("Firefox")) {
-//			
-//			driver = new FirefoxDriver();
-//			}
-
 		
 		switch (browser.toLowerCase()) {
 		case "Chrome":
