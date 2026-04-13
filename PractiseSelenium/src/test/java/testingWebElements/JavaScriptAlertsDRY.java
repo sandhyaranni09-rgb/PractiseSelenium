@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import managers.ExtentTestManager;
+
 public class JavaScriptAlertsDRY extends BaseForJavaScript {
 
 //	WebDriver driver;
@@ -15,7 +17,7 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 
 	@Test
 
-	public void jsAlerts() {
+	public void clickForJSAlerts() {
 
 		// preReq();
 		
@@ -23,11 +25,13 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
 
 		jsAlertsEle.click();
+		ExtentTestManager.log.info("Clicked on JavaScript Alerts");
 
 		WebElement jsAlertEle = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Alert']")));
 
 		jsAlertEle.click();
+		ExtentTestManager.log.info("Clicked on JS Alert");
 
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		alert.accept();
@@ -36,7 +40,8 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 		String message = driver.findElement(By.xpath("//p[@id='result']")).getText();
 
 		Assert.assertEquals(message, "You successfully clicked an alert");
-		System.out.println(message);
+		ExtentTestManager.log.info(message);
+		//System.out.println(message);
 
 		// tearDown();
 	}
@@ -50,11 +55,13 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
 
 		jsAlertsEle.click();
+		ExtentTestManager.log.info("Clicked on JavaScript Alerts");
 
 		WebElement clickJSConfirm = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Confirm']")));
 
 		clickJSConfirm.click();
+		ExtentTestManager.log.info("Clicked on JS Confirm Alerts");
 
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		alert.accept();
@@ -63,7 +70,8 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 		String message = driver.findElement(By.xpath("//p[@id='result']")).getText();
 
 		Assert.assertEquals(message, "You clicked: Ok");
-		System.out.println(message);
+		ExtentTestManager.log.info(message);
+		//System.out.println(message);
 
 		// tearDown();
 
@@ -78,8 +86,10 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']")));
 
 		jsAlertsEle.click();
+		ExtentTestManager.log.info("Clicked on JavaScript Alerts");
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Click for JS Prompt']"))).click();
+		ExtentTestManager.log.info("Clicked on JS Prompt");
 
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		alert.sendKeys("Sandhya");
@@ -89,8 +99,10 @@ public class JavaScriptAlertsDRY extends BaseForJavaScript {
 		String msg = driver.findElement(By.xpath("//p[@id='result']")).getText();
 
 		Assert.assertEquals(msg, "You entered: Sandhya");
+		
+		ExtentTestManager.log.info(msg);
 
-		System.out.println(msg);
+		//System.out.println(msg);
 
 		// tearDown();
 	}

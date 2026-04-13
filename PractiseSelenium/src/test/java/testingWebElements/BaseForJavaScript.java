@@ -15,6 +15,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
@@ -42,27 +43,32 @@ public class BaseForJavaScript {
 //		driver = new ChromeDriver();
 //		}
 
-		switch (browser.toLowerCase()) {
+		switch (browser) {
 		case "Chrome":
 			driver = new ChromeDriver();
 			ExtentTestManager.log.info("Chrome Browser was launched succcessfully !!");
+			break;
 
 		case "Firefox":
 
 			driver = new FirefoxDriver();
 			ExtentTestManager.log.info("Firefox Browser was launched succcessfully !!");
+			break;
 
 		case "Edge":
 			driver = new EdgeDriver();
 			ExtentTestManager.log.info("Edge Browser was launched succcessfully !!");
+			break;
 
 		case "Safari":
 			driver = new SafariDriver();
 			ExtentTestManager.log.info("Safari Browser was launched succcessfully !!");
+			break;
 
 		case "InternetExplorerDriver":
 			driver = new InternetExplorerDriver();
 			ExtentTestManager.log.info("IE Browser was launched succcessfully !!");
+			break;
 
 		default:
 			System.out.println("Browser not Supported !");
@@ -86,6 +92,7 @@ public class BaseForJavaScript {
 
 	}
 
+	@AfterSuite
 	public void tearDown() {
 		ExtentManager.flushReport();
 	}
