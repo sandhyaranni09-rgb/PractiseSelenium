@@ -1,5 +1,6 @@
 package testingWebElements;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
@@ -12,15 +13,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import util.BaseUtils;
+
 public class JavaScriptAlerts {
 
 	@Test
 
-	public void jsAlerts() {
+	public void jsAlerts() throws IOException {
 
 		WebDriver driver = new ChromeDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		driver.navigate().to("https://the-internet.herokuapp.com/");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.valueOf(BaseUtils.getConfigValue("explicitwait"))));
+		driver.navigate().to(BaseUtils.getConfigValue("url"));
 
 		// WebElement jsAlertsEle= driver.findElement(By.xpath("//a[text()='JavaScript
 		// Alerts']")).click();
@@ -48,12 +51,12 @@ public class JavaScriptAlerts {
 	}
 
 	@Test
-	public void clickForJSConfirm() {
+	public void clickForJSConfirm() throws IOException {
 		WebDriver driver = new ChromeDriver();
 
-		driver.navigate().to("https://the-internet.herokuapp.com/");
+		driver.navigate().to(BaseUtils.getConfigValue("url"));
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.valueOf(BaseUtils.getConfigValue("explicitwait"))));
 
 		driver.findElement(By.xpath("//a[text()='JavaScript Alerts']")).click();
 
@@ -77,13 +80,13 @@ public class JavaScriptAlerts {
 	
 	@Test
 
-	public void clickForJSPrompt() {
+	public void clickForJSPrompt() throws IOException {
 
 		WebDriver driver = new ChromeDriver();
 
-		driver.get("https://the-internet.herokuapp.com/");
+		driver.get(BaseUtils.getConfigValue("url"));
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.valueOf(BaseUtils.getConfigValue("explicitwait"))));
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='JavaScript Alerts']"))).click();
 

@@ -21,6 +21,7 @@ import org.testng.annotations.BeforeSuite;
 
 import managers.ExtentManager;
 import managers.ExtentTestManager;
+import util.BaseUtils;
 
 public class BaseForJavaScript {
 
@@ -33,7 +34,7 @@ public class BaseForJavaScript {
 	}
 
 	@BeforeMethod
-	public void preReq(Method method) {
+	public void preReq(Method method) throws NumberFormatException, IOException {
 
 		ExtentTestManager.createTest(method.getName());
 		String browser = "Chrome";
@@ -77,8 +78,8 @@ public class BaseForJavaScript {
 
 		}
 
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		driver.navigate().to("https://the-internet.herokuapp.com/");
+		wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.valueOf(BaseUtils.getConfigValue("explicitwait"))));
+		driver.navigate().to(BaseUtils.getConfigValue("url"));
 		ExtentTestManager.log.info("Navigated to the url");
 
 	}
