@@ -25,7 +25,7 @@ public class BaseForTestTable {
 
 	@AfterMethod
 	public void tearDown() {
-		System.out.println("Am in the After Method");
+		//System.out.println("Am in the After Method");
 		driver.quit();
 	}
 }

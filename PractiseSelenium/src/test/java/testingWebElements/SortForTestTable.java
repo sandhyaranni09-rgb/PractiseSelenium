@@ -28,11 +28,14 @@ public class SortForTestTable extends BaseForTestTable {
 			String values = el.getText();
 			int number = Integer.parseInt(values.replaceAll("[^0-9]", ""));
 			actualList.add(number);
-			System.out.println(actualList);
+			
+		}
 
 			List<Integer> sortedList = new ArrayList<>(actualList);
 			Collections.sort(sortedList);
-			System.out.println(sortedList);
+
+			System.out.println("Actual List from the Table is" + actualList);
+			System.out.println("Sorted List" + sortedList);
 
 			Assert.assertEquals(actualList, sortedList, "List is not sorted!");
 
@@ -40,4 +43,4 @@ public class SortForTestTable extends BaseForTestTable {
 
 	}
 
-}
+
