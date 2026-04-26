@@ -28,19 +28,42 @@ public class SortForTestTable extends BaseForTestTable {
 			String values = el.getText();
 			int number = Integer.parseInt(values.replaceAll("[^0-9]", ""));
 			actualList.add(number);
-			
 		}
 
-			List<Integer> sortedList = new ArrayList<>(actualList);
-			Collections.sort(sortedList);
+		List<Integer> sortedList = new ArrayList<>(actualList);
+		Collections.sort(sortedList);
 
-			System.out.println("Actual List from the Table is" + actualList);
-			System.out.println("Sorted List" + sortedList);
+		System.out.println("Actual List from the Table is" + actualList);
+		System.out.println("Sorted List" + sortedList);
 
-			Assert.assertEquals(actualList, sortedList, "List is not sorted!");
-
-		}
+		Assert.assertEquals(actualList, sortedList, "List is not sorted!");
 
 	}
 
+	@Test
+	public void sortByCourse() {
 
+		driver.findElement(By.xpath("//select[@id='sortBy']")).click();
+
+		driver.findElement(By.xpath("//select[@id='sortBy']/option[@value='col_course']")).click();
+
+		List<WebElement> elements = driver.findElements(By.xpath("//table/tbody/tr/td[2]"));
+
+		List<String> actualList = new ArrayList<>();
+
+		for (WebElement i : elements) {
+			String values = i.getText();
+			actualList.add(values);
+		}
+
+		List<String> sortedList = new ArrayList<>(actualList);
+		Collections.sort(sortedList);
+
+		System.out.println("Actual List " + actualList);
+		System.out.println("Sorted List " + sortedList);
+
+		Assert.assertEquals(actualList, sortedList, "List is not sorted!");
+
+	}
+
+}
